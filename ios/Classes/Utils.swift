@@ -68,6 +68,8 @@ struct Constants {
     static let linearPCMIsFloat = "linearPCMIsFloat";
     static let pauseAllPlayers = "pauseAllPlayers"
     static let stopExtraction = "stopExtraction"
+    static let appendPath = "appendPath";
+    static let stopAnyRecording = "stopAnyRecording";
 }
 
 

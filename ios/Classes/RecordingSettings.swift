@@ -18,6 +18,9 @@ struct RecordingSettings {
     var linearPCMBitDepth : Int
     var linearPCMIsBigEndian : Bool
     var linearPCMIsFloat : Bool
+    var appendPath : Bool
+    var stopAnyRecording : Bool
+
     
     static func fromJson(_ json: [String: Any]) -> RecordingSettings {
         let path = json[Constants.path] as? String
@@ -30,6 +33,8 @@ struct RecordingSettings {
         let linearPCMBitDepth = json[Constants.linearPCMBitDepth] as? Int ?? 16
         let linearPCMIsBigEndian = json[Constants.linearPCMIsBigEndian] as? Bool ?? false
         let linearPCMIsFloat = json[Constants.linearPCMIsFloat] as? Bool ?? false
+        let appendPath = json[Constants.appendPath] as? Bool ?? false
+        let stopAnyRecording = json[Constants.stopAnyRecording] as? Bool ?? false
         
         return RecordingSettings(
             path: path,
@@ -41,7 +46,9 @@ struct RecordingSettings {
             overrideAudioSession: overrideAudioSession,
             linearPCMBitDepth: linearPCMBitDepth,
             linearPCMIsBigEndian: linearPCMIsBigEndian,
-            linearPCMIsFloat: linearPCMIsFloat
+            linearPCMIsFloat: linearPCMIsFloat,
+            appendPath: appendPath,
+            stopAnyRecording: stopAnyRecording
         )
     }
 }

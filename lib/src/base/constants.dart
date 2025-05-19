@@ -11,6 +11,8 @@ class Constants {
   static const String getDecibel = 'getDecibel';
   static const String checkPermission = 'checkPermission';
   static const String path = 'path';
+  static const String appendPath = 'appendPath';
+  static const String stopAnyRecording = 'stopAnyRecording';
   static const String encoder = 'encoder';
   static const String outputFormat = 'outputFormat';
   static const String sampleRate = 'sampleRate';

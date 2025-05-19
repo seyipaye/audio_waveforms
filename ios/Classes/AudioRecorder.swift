@@ -10,6 +10,13 @@ public class AudioRecorder: NSObject, AVAudioRecorderDelegate{
     
     func startRecording(_ result: @escaping FlutterResult,_ recordingSettings: RecordingSettings){
         useLegacyNormalization = recordingSettings.useLegacy ?? false
+        
+        print(recordingSettings)
+        
+        if (recordingSettings.stopAnyRecording == true) {
+            self.audioUrl = nil
+            self.stopRecording({ _ in })
+        }
 
         var settings: [String: Any] = [
                 AVFormatIDKey: getEncoder(recordingSettings.encoder ?? 0),
@@ -36,6 +43,9 @@ public class AudioRecorder: NSObject, AVAudioRecorderDelegate{
             dateFormatter.dateFormat = recordingSettings.fileNameFormat
             let fileName = dateFormatter.string(from: date) + ".m4a"
             self.path = "\(documentDirectory)/\(fileName)"
+        } else if recordingSettings.appendPath {
+            let documentDirectory = getDocumentDirectory(result)
+            self.path = "\(documentDirectory)\(recordingSettings.path!)"
         } else {
             self.path = recordingSettings.path
         }

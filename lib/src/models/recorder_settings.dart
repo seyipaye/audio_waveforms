@@ -15,6 +15,8 @@ class RecorderSettings {
     this.iosEncoderSettings = const IosEncoderSetting(),
     this.sampleRate = 44100,
     this.bitRate,
+    this.appendPath = false,
+    this.stopAnyRecording = false,
   });
 
   /// Encoder settings for Android devices.
@@ -31,6 +33,10 @@ class RecorderSettings {
   /// Higher values provide better quality but larger file sizes.
   final int? bitRate;
 
+  final bool appendPath;
+
+  final bool stopAnyRecording;
+
   /// Converts the RecorderSettings instance to a JSON map for iOS.
   Map<String, dynamic> iosToJson({
     String? path,
@@ -39,6 +45,8 @@ class RecorderSettings {
   }) =>
       {
         Constants.path: path,
+        Constants.appendPath: appendPath,
+        Constants.stopAnyRecording: stopAnyRecording,
         Constants.encoder: iosEncoderSettings.iosEncoder.index,
         Constants.sampleRate: sampleRate,
         Constants.bitRate: bitRate,

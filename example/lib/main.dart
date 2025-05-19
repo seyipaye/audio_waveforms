@@ -219,9 +219,12 @@ class _HomeState extends State<Home> {
           debugPrint("Recorded file size: ${File(path!).lengthSync()}");
         }
       } else {
+        final timestamp = DateTime.now().millisecondsSinceEpoch;
+        final path = "/path_$timestamp.m4a";
+        
         await recorderController.record(
           path: path, // Path is optional
-          recorderSettings: const RecorderSettings(),
+          recorderSettings: const RecorderSettings(appendPath: true, stopAnyRecording: true),
         );
       }
     } catch (e) {
