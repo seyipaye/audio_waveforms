@@ -17,6 +17,7 @@ class RecorderSettings {
     this.bitRate,
     this.appendPath = false,
     this.stopAnyRecording = false,
+    this.quality = AVAudioQuality.high,
   });
 
   /// Encoder settings for Android devices.
@@ -37,6 +38,8 @@ class RecorderSettings {
 
   final bool stopAnyRecording;
 
+  final AVAudioQuality quality;
+
   /// Converts the RecorderSettings instance to a JSON map for iOS.
   Map<String, dynamic> iosToJson({
     String? path,
@@ -47,6 +50,7 @@ class RecorderSettings {
         Constants.path: path,
         Constants.appendPath: appendPath,
         Constants.stopAnyRecording: stopAnyRecording,
+        Constants.quality: quality.value,
         Constants.encoder: iosEncoderSettings.iosEncoder.index,
         Constants.sampleRate: sampleRate,
         Constants.bitRate: bitRate,
@@ -66,4 +70,29 @@ class RecorderSettings {
         Constants.sampleRate: sampleRate,
         Constants.bitRate: bitRate,
       };
+}
+
+enum AVAudioQuality {
+  min,
+  low,
+  medium,
+  high,
+  max,
+}
+
+extension AVAudioQualityValue on AVAudioQuality {
+  int get value {
+    switch (this) {
+      case AVAudioQuality.min:
+        return 0;
+      case AVAudioQuality.low:
+        return 32;
+      case AVAudioQuality.medium:
+        return 64;
+      case AVAudioQuality.high:
+        return 96;
+      case AVAudioQuality.max:
+        return 127;
+    }
+  }
 }

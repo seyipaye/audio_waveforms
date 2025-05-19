@@ -13,6 +13,7 @@ class Constants {
   static const String path = 'path';
   static const String appendPath = 'appendPath';
   static const String stopAnyRecording = 'stopAnyRecording';
+  static const String quality = 'quality';
   static const String encoder = 'encoder';
   static const String outputFormat = 'outputFormat';
   static const String sampleRate = 'sampleRate';

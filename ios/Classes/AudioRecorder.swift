@@ -12,6 +12,7 @@ public class AudioRecorder: NSObject, AVAudioRecorderDelegate{
         useLegacyNormalization = recordingSettings.useLegacy ?? false
         
         print(recordingSettings)
+        print(recordingSettings.quality.rawValue)
         
         if (recordingSettings.stopAnyRecording == true) {
             self.audioUrl = nil
@@ -22,7 +23,7 @@ public class AudioRecorder: NSObject, AVAudioRecorderDelegate{
                 AVFormatIDKey: getEncoder(recordingSettings.encoder ?? 0),
                 AVSampleRateKey: recordingSettings.sampleRate ?? 44100,
                 AVNumberOfChannelsKey: 1,
-                AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+                AVEncoderAudioQualityKey: recordingSettings.quality.rawValue
             ]
         
         if (recordingSettings.bitRate != nil) {

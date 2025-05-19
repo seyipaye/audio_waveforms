@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AVFoundation
 
 struct RecordingSettings {
     var path: String?
@@ -20,7 +21,7 @@ struct RecordingSettings {
     var linearPCMIsFloat : Bool
     var appendPath : Bool
     var stopAnyRecording : Bool
-
+    var quality: AVAudioQuality
     
     static func fromJson(_ json: [String: Any]) -> RecordingSettings {
         let path = json[Constants.path] as? String
@@ -35,6 +36,8 @@ struct RecordingSettings {
         let linearPCMIsFloat = json[Constants.linearPCMIsFloat] as? Bool ?? false
         let appendPath = json[Constants.appendPath] as? Bool ?? false
         let stopAnyRecording = json[Constants.stopAnyRecording] as? Bool ?? false
+        let qualityRawValue = json["quality"] as? Int
+        let quality = AVAudioQuality(rawValue: qualityRawValue ?? AVAudioQuality.high.rawValue)
         
         return RecordingSettings(
             path: path,
@@ -48,7 +51,8 @@ struct RecordingSettings {
             linearPCMIsBigEndian: linearPCMIsBigEndian,
             linearPCMIsFloat: linearPCMIsFloat,
             appendPath: appendPath,
-            stopAnyRecording: stopAnyRecording
+            stopAnyRecording: stopAnyRecording,
+            quality: quality!
         )
     }
 }
