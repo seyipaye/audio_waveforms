@@ -221,10 +221,10 @@ class _HomeState extends State<Home> {
       } else {
         final timestamp = DateTime.now().millisecondsSinceEpoch;
         final path = "/path_$timestamp.m4a";
-        
+
         await recorderController.record(
           path: path, // Path is optional
-          recorderSettings: const RecorderSettings(appendPath: true, stopAnyRecording: true),
+          recorderSettings: const RecorderSettings(appendPath: true, stopAnyRecording: true, quality: AVAudioQuality.medium),
         );
       }
     } catch (e) {

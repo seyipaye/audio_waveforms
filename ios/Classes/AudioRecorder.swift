@@ -12,7 +12,7 @@ public class AudioRecorder: NSObject, AVAudioRecorderDelegate{
         useLegacyNormalization = recordingSettings.useLegacy ?? false
         
         print(recordingSettings)
-        print(recordingSettings.quality.rawValue)
+        print("Record Quality: \(recordingSettings.quality.rawValue)")
         
         if (recordingSettings.stopAnyRecording == true) {
             self.audioUrl = nil
