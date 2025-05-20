@@ -75,8 +75,8 @@ class _WaveBubbleState extends State<WaveBubble> {
   late StreamSubscription<PlayerState> playerStateSubscription;
 
   final playerWaveStyle = const PlayerWaveStyle(
-    fixedWaveColor: Colors.white54,
-    liveWaveColor: Colors.white,
+    fixedWaveColor: Colors.grey,
+    liveWaveColor: Colors.black,
     spacing: 6,
   );
 
