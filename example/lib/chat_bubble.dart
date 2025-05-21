@@ -116,7 +116,6 @@ class _WaveBubbleState extends State<WaveBubble> {
                 playerWaveStyle.getSamplesForWidth(widget.width ?? 200),
           )
           .then((waveformData) {
-            debugPrint("Runn aa");
             debugPrint(waveformData.toString());
           })
           .catchError((error) {
