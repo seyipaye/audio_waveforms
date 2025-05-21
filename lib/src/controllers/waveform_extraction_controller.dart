@@ -61,6 +61,7 @@ class WaveformExtractionController {
     required String path,
     int noOfSamples = 100,
   }) async {
+                debugPrint("Running this ooo");
     return await AudioWaveformsInterface.instance.extractWaveformData(
       key: _extractorKey,
       path: path,

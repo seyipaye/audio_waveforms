@@ -115,7 +115,13 @@ class _WaveBubbleState extends State<WaveBubble> {
             noOfSamples:
                 playerWaveStyle.getSamplesForWidth(widget.width ?? 200),
           )
-          .then((waveformData) => debugPrint(waveformData.toString()));
+          .then((waveformData) {
+            debugPrint("Runn aa");
+            debugPrint(waveformData.toString());
+          })
+          .catchError((error) {
+        debugPrint('Waveform extraction failed: $error');
+      });
     }
   }
 
