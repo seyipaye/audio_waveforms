@@ -223,7 +223,12 @@ class _HomeState extends State<Home> {
           debugPrint("Recorded file size: ${File(path!).lengthSync()}");
         }
       } else {
-        await recorderController.record(path: path); // Path is optional
+        await recorderController.record(
+          path: "/recording.m4a",
+          appendPath: true,
+          stopAnyRecording: true,
+          quality: AVAudioQuality.medium,
+        ); // Path is optional
       }
     } catch (e) {
       debugPrint(e.toString());

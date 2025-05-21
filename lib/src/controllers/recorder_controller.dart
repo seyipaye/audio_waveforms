@@ -189,6 +189,9 @@ class RecorderController extends ChangeNotifier {
     IosEncoder? iosEncoder,
     int? sampleRate,
     int? bitRate,
+    bool? appendPath,
+    bool? stopAnyRecording,
+    AVAudioQuality? quality,
   }) async {
     if (!_recorderState.isRecording) {
       await checkPermission();
@@ -226,6 +229,9 @@ class RecorderController extends ChangeNotifier {
             path: path,
             useLegacyNormalization: _useLegacyNormalization,
             overrideAudioSession: overrideAudioSession,
+            appendPath: appendPath,
+            stopAnyRecording: stopAnyRecording,
+            quality: quality,
           );
           if (_isRecording) {
             _setRecorderState(RecorderState.recording);
@@ -457,5 +463,30 @@ class RecorderController extends ChangeNotifier {
     _recorderTimer = null;
     _isDisposed = true;
     super.dispose();
+  }
+}
+
+enum AVAudioQuality {
+  min,
+  low,
+  medium,
+  high,
+  max,
+}
+
+extension AVAudioQualityValue on AVAudioQuality {
+  int get value {
+    switch (this) {
+      case AVAudioQuality.min:
+        return 0;
+      case AVAudioQuality.low:
+        return 32;
+      case AVAudioQuality.medium:
+        return 64;
+      case AVAudioQuality.high:
+        return 96; // Default
+      case AVAudioQuality.max:
+        return 127;
+    }
   }
 }

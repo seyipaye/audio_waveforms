@@ -16,6 +16,9 @@ class AudioWaveformsInterface {
     String? path,
     bool useLegacyNormalization = false,
     bool overrideAudioSession = true,
+    bool? appendPath = false,
+    bool? stopAnyRecording = false,
+    AVAudioQuality? quality,
   }) async {
     final isRecording = await _methodChannel.invokeMethod(
       Constants.startRecording,
@@ -27,6 +30,9 @@ class AudioWaveformsInterface {
               Constants.bitRate: bitRate,
               Constants.useLegacyNormalization: useLegacyNormalization,
               Constants.overrideAudioSession: overrideAudioSession,
+              Constants.appendPath: appendPath,
+              Constants.stopAnyRecording: stopAnyRecording,
+              Constants.quality: quality?.value ?? AVAudioQuality.high.value,
             }
           : {
               Constants.useLegacyNormalization: useLegacyNormalization,

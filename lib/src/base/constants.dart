@@ -50,4 +50,7 @@ class Constants {
   static const String overrideAudioSession = "overrideAudioSession";
   static const String resultFilePath = "resultFilePath";
   static const String resultDuration = "resultDuration";
+  static const String appendPath = "appendPath";
+  static const String stopAnyRecording = "stopAnyRecording";
+  static const String quality = "quality";
 }
